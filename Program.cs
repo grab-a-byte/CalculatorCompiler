@@ -15,3 +15,8 @@ var ast = parser.Parse();
 Console.WriteLine(ast);
 
 Console.WriteLine(AstPrinter.ToString(ast));
+
+var instructions = Compiler.Compile(ast);
+var vm = new VirtualMachine(instructions);
+vm.Run();
+vm.PrintStackTop();
