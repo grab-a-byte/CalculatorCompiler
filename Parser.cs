@@ -12,7 +12,8 @@ enum Precedence {
     Subtract = 1,
     Add = 2,
     Multiply = 3,
-    Divide= 4
+    Divide= 4,
+    Prefix = 5
 }
 //samdob
 
@@ -37,6 +38,7 @@ public sealed class Parser
     {
         _tokens = tokens;
         _prefixFunctions.Add(TokenType.Number, ParseNumber);
+        _prefixFunctions.Add(TokenType.Hyphen, ParseNegation);
 
         _infixFunctions.Add(TokenType.Plus, ParseInfixExpression);
         _infixFunctions.Add(TokenType.Hyphen, ParseInfixExpression);
@@ -58,10 +60,17 @@ public sealed class Parser
         return currentType is null ? Precedence.Lowest : _tokenPrecedences[(TokenType)currentType];
     }
 
+    private Expression ParseNegation()
+    {
+        _current++;
+        var right = ParseExpression(Precedence.Prefix);
+        return new PrefixExpression('-',  right);
+    }
+
     private Expression ParseExpression(Precedence precedence)
     {
-        var currentToken = _tokens.First();
-        var prefix = _prefixFunctions[currentToken.Type] ?? throw new Exception("Unable to find prefix function");
+        var currentToken = CurrentToken();
+        var prefix = _prefixFunctions[currentToken!.Type] ?? throw new Exception("Unable to find prefix function");
         Expression left = prefix();
         var currentType = CurrentTokenType();
         if (currentType is null)
