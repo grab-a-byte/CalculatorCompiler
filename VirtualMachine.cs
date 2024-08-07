@@ -10,7 +10,7 @@ public record Push(float Value) : Operation;
 
 public class VirtualMachine(IEnumerable<Operation> bytecode)
 {
-    private Stack<float> _stack = new();
+    private readonly Stack<float> _stack = new();
 
     public void Run()
     {

@@ -10,11 +10,11 @@ public static class AstPrinter
         }
         else if (expr is PrefixExpression pe)
         {
-            return "(" +  pe.Op.ToString() + AstPrinter.ToString(pe.Right) + ")";
+            return "(" +  pe.Op.ToString() + ToString(pe.Right) + ")";
         }
         else if (expr is InfixExpression ie)
         {
-            return "(" + AstPrinter.ToString(ie.Left) + ie.Op.ToString() + AstPrinter.ToString(ie.Right) + ")";
+            return "(" + ToString(ie.Left) + ie.Op.ToString() + ToString(ie.Right) + ")";
         }
 
         else return "";
