@@ -1,0 +1,4 @@
+Pratt Parser (Top Down Operator Parser)
+https://tdop.github.io/
+
+https://github.com/terrajobst/minsk/blob/master/src/Minsk/CodeAnalysis/Emit/Emitter.cs#L71

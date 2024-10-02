@@ -1,6 +1,6 @@
 ﻿using calculator;
 
-var input = "-2 * 8 / 4";
+const string input = "1 + 2 - 3 / 4 * 5";
 
 var tokens = Lexer.Tokenize(input);
 foreach (var token in tokens)
@@ -13,9 +13,13 @@ var ast = parser.Parse();
 
 
 Console.WriteLine(AstPrinter.ToString(ast));
-
-var instructions = Compiler.Compile(ast);
-var vm = new VirtualMachine(instructions);
-vm.Run();
+//
+// var instructions = Compiler.Compile(ast);
+// var vm = new VirtualMachine(instructions);
+// vm.Run();
 // vm.RunAndPrintStack();
-vm.PrintStackTop();
+// vm.PrintStackTop();
+
+// IlCompiler ilCompiler = new(ast);
+// ilCompiler.Compile();
+// ilCompiler.Save();

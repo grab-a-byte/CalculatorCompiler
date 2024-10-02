@@ -34,6 +34,7 @@ public static class Lexer
 
         return [.. tokens];
     }
-    static string ParseNumber(string input) => new(input.TakeWhile(x => char.IsDigit(x) || x is '.').ToArray());
-    static int SkipWhitespace(string input) => input.TakeWhile(char.IsWhiteSpace).Count();
+
+    private static string ParseNumber(string input) => new(input.TakeWhile(x => char.IsDigit(x) || x is '.').ToArray());
+    private static int SkipWhitespace(string input) => input.TakeWhile(char.IsWhiteSpace).Count();
 }
