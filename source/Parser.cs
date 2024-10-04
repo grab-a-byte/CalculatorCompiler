@@ -15,7 +15,6 @@ enum Precedence {
     Divide= 4,
     Prefix = 5
 }
-//samdob
 
 public sealed class Parser
 {

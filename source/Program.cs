@@ -13,12 +13,16 @@ var ast = parser.Parse();
 
 
 Console.WriteLine(AstPrinter.ToString(ast));
-//
-// var instructions = Compiler.Compile(ast);
-// var vm = new VirtualMachine(instructions);
+
+var instructions = Compiler.Compile(ast);
+foreach (var instruction in instructions)
+{
+    Console.WriteLine(instruction);
+}
+var vm = new VirtualMachine(instructions);
 // vm.Run();
-// vm.RunAndPrintStack();
-// vm.PrintStackTop();
+vm.RunAndPrintStack();
+vm.PrintStackTop();
 
 // IlCompiler ilCompiler = new(ast);
 // ilCompiler.Compile();
