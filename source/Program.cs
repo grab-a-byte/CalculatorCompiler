@@ -1,6 +1,6 @@
 ﻿using calculator;
 
-const string input = "1 + 2 - 3 / 4 * 5";
+const string input = "1 + 2 - 3";
 
 var tokens = Lexer.Tokenize(input);
 foreach (var token in tokens)
